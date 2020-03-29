@@ -1,6 +1,10 @@
 // PATRON DE DISEÑO DE CREACCION
-// SE CREA UNA CLASE EN AL QUE TENGA UN METODO FACTORY
-// Y SE ELIGE LA INSTANCIA DE CADA OBJETO SEGUN SEA CONVENIENTE
+// SOLO SE PUEDE INTANCIAR UNA VEZ LA CLASE, VERIFICANDO LA EXITENCIA
+//  SI YA SE HIZO DEVUELVE LA MISMA INSTANCIA, SINO CREA OTRA
+
+/////////////////
+//OBJET LITERAL//
+/////////////////
 
 // const alumnos = {
 //   listaAlumnos: [],
@@ -30,28 +34,51 @@
 // alumnos.crear(infoAlumno);
 // alumnos.crear(infoAlumno2);
 
-class SedePrincipal {
-  instancia = null;
-  cont = 0;
-  constructor() {}
+/////////////////
+///CLASES ES6////
+/////////////////
 
-  createInstance() {
-    if (this.instancia === null) {
-      this.instancia = new SedePrincipal();
+class SedePrincipal {
+  constructor() {
+    this.num_limonada = 0;
+    this.num_cola = 0;
+
+    if (typeof SedePrincipal.instance === "object") {
+      return SedePrincipal.instance;
     }
+    SedePrincipal.instance = this;
+    return this;
   }
-  getIntance() {
-    if (this.instancia === null) {
-      this.createInstance();
-    }
-    return this.instancia;
+
+  getNumLimonada() {
+    return this.num_limonada;
   }
-  getCont() {
-    return this.cont;
+  getNumCola() {
+    return this.num_cola;
   }
-  setCont(a) {
-    this.cont += a;
+  setNumCola(a) {
+    this.num_cola += a;
+  }
+  setNumLimonada(a) {
+    this.num_limonada += a;
   }
 }
 
-let a = new SedePrincipal();
+let sede1 = new SedePrincipal();
+let sede2 = new SedePrincipal();
+let sede3 = new SedePrincipal();
+
+sede1.setNumLimonada(15);
+console.log("PRIMERA FABRICA");
+console.log(sede1.getNumCola());
+console.log(sede1.getNumLimonada());
+
+sede2.setNumCola(10);
+console.log("SEGUNDA FABRICA");
+console.log(sede2.getNumCola());
+console.log(sede2.getNumLimonada());
+
+sede3.setNumLimonada(5);
+console.log("TERCER FABRICA");
+console.log(sede3.getNumCola());
+console.log(sede3.getNumLimonada());
