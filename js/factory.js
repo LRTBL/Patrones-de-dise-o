@@ -14,7 +14,17 @@ function ConstructorSitios() {
     } else if (tipo === "p") {
       html = new ParrafoHTML(texto);
     }
+    return html;
   };
 }
 
+class InputHTML {
+  constructor(text) {
+    this.text = text;
+  }
+}
+
+// ...
+
 const sitioWeb = new ConstructorSitios();
+console.log(sitioWeb.crearElemento("hola", "input"));

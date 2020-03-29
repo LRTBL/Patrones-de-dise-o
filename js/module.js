@@ -1,4 +1,6 @@
 // MODULE PATTERN
+//SIMULA EL TIPO DE ACCESO DE LAS VARIABLES, FUNCIONES EN
+// PRIVATE O PUBLIC
 
 const comprarBoleto = (function() {
   // PRIVADO
